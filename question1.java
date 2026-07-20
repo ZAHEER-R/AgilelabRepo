@@ -1,37 +1,61 @@
 //Question 1
-import java.util.Scanner;
 import java.util.*;
+import java.util.Scanner;
 
-public agilecode{
-    public static void main (string args[]){
+
+public class agile1{
+    public static void main (String args[]){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello Techies, Welcome to WEB\n");
         System.out.println("Please enter your username and password to login\n");
             System.out.println("Username: ");
-            int number,  letter_lower,letter_upper;
-            string username = scanner.nextLine();
+            int i,number,symbol=0, numberc=0, letter_lower=0,letter_upper=0;
+            String username = scanner.next();
             System.out.println("\nPassword: ");
-            string password = scanner.nextLine();
+            String password = scanner.next();
             //zaheer
-            System.out.println("Enter password having atleast 1 a..z,1 1..9, 1 letter A-Z,1 char from $#@...\n");
-            if(length(password<6)){
-                System.out.println("\nMinimum length of 6 is required for password Enter again\n");
+            System.out.println("Enter password having atleast  a..z  1..9   A-Z  $#@...\n");
+            if(password.length()<6){
+                System.out.println("Minimum length of 6 is required..\n");
             }
-            else if(length(password>12)){
-                System.out.println("\nMaximum length is 12 for password Try again\n");
+            else if(password.length()>12){
+                System.out.println("Maximum length is 12 for password Try again\n");
             }
             else{
                 //checking symbols chars
-                for(int i=0;i<length(password);i++){
-                    password[i] = 1 ||2||3||4||5||6||7||8||9||0;
-                    number++;
-                }
-                for(int i=0;i<length(password);i++){
-                    char character = a;
-                    character++;
-                }
-
+                for( i=0;i<password.length();i++){
+                 char target = password.charAt(i);
+                    if(Character.isDigit(target)){
+                        numberc++;
+                    }
+                    if(Character.isUpperCase(target)){
+                        letter_upper++;
+                    }
+                    else if(Character.isLowerCase(target)){
+                        letter_lower++;
+                    }
+                    else if(!Character.isLetterOrDigit(target)){
+                        symbol++;
+                    }
+                    else{}
+                }   
+                    if(numberc==0){
+                        System.out.println("Password should contain atleast 1 number...\n");
+                    }
+                    else if(letter_lower==0){
+                        System.out.println("Password should contain atleast 1 lowercase a..z...\n");
+                    }
+                    else if(letter_upper==0){
+                        System.out.println("Password should contain atleast 1 uppercase A..Z...\n");
+                    }
+                    else if(symbol==0){
+                        System.out.println("One special symbol should required..\n");
+                    }
+                    else{
+                        System.out.println("Correct credentials! you are logged in..\n");
+                    }
+                
             }
-
+            scanner.close();
     }
 }
